@@ -41,8 +41,6 @@ export default props => {
 
     if (investments !== null) {
       filterInvestments(investments);
-      console.log(graphData);
-      console.log(sumInvestments);
       setGraphData({
         series: [
           {
