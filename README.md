@@ -31,7 +31,7 @@ Now you can run this command to start the server:
 
     npm start
 
-The application will be listen in `http://localhost:3001`
+The application will be listening in `http://localhost:3001`
 
 **IMPORTANT**
 both applications need to be running to get everything working fine.
