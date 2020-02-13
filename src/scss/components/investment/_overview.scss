@@ -1,0 +1,51 @@
+.app-overview-container {
+  .app-overview-title {
+    font-weight: 200;
+    align-self: flex-start;
+    display: block;
+    margin: 30px 15px;
+  }
+
+  .app-overview {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 45px;
+
+    @media screen and(max-width: 650px) {
+      flex-direction: column;
+    }
+
+    .graph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-basis: 50%;
+    }
+
+    .statistics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-basis: 50%;
+
+      .statistic-1,
+      .statistic-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 200;
+
+        span {
+          font-size: 2.5em;
+          color: lightseagreen;
+        }
+      }
+    }
+  }
+}

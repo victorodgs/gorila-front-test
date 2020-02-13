@@ -1,0 +1,70 @@
+// Bootstrap Sass
+@import './vendors/bootstrap';
+
+// App styles variables
+@import 'variables';
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+}
+
+.btn-action {
+  background: $green;
+  border: 0;
+  border-radius: 0;
+  color: #fff;
+
+  &.active {
+    background-color: #1c6943 !important;
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: #1c6943;
+  }
+}
+
+.loading {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+  font-size: 3.5em;
+  display: block;
+  margin: 30px auto;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+// Components
+@import './components/investment/form';
+@import './components/investment/list';
+@import './components/layout/dashboard';
+@import './components/investment/overview';

@@ -1,0 +1,17 @@
+// Style for fonts in result list
+@mixin result-item-typo() {
+  small {
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 0;
+    width: 50%;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+}
