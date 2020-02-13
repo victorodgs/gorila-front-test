@@ -14,23 +14,15 @@ export default props => {
   const [isLoading, setisLoading] = useState(true);
 
   const deleteInvestment = investment => {
+    setisLoading(true);
     (async () => {
-      let response = await api
-        .delete(`/investments/${investment._id}`, investment)
-        .then(
-          Swal.fire({
-            title: 'Sucesso!',
-            text: 'O investimento foi deletado com sucesso',
-            icon: 'success',
-            confirmButtonText: 'Voltar',
-          })
-        );
+      let response = await api.delete(
+        `/investments/${investment._id}`,
+        investment
+      );
     })();
 
-    (async () => {
-      let response = await api.get(`/investments/`);
-      setInvestments(response.data);
-    })();
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -56,7 +48,7 @@ export default props => {
       filterInvestments(investments);
       setisLoading(false);
     }
-  }, [investments, setFixedInvestments, setVariableInvestments]);
+  }, [investments, setFixedInvestments, setVariableInvestments, isLoading]);
 
   return (
     <section className="investments-list">

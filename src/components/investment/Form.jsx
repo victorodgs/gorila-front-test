@@ -33,10 +33,9 @@ export default props => {
 
         setInvestment({
           ...investment,
-          value: formattedValue.includes(',')
-            ? parseFloat(formattedValue.replace(',', '.'))
-            : parseFloat(formattedValue),
+          value: parseFloat(formattedValue),
         });
+
         break;
 
       default:
@@ -46,15 +45,15 @@ export default props => {
 
   const save = (e, investment) => {
     e.preventDefault();
-
     (async () => {
       let response = await api.post(`/investments`, investment);
     })();
 
-    (async () => {
-      let response = await api.get(`/investments/`);
-      setInvestments(response.data);
-    })();
+    setInvestment({
+      type: 'RENDA_FIXA',
+      value: '',
+      date: new Date(),
+    });
   };
 
   function handleDayClick(day) {
@@ -116,10 +115,12 @@ export default props => {
               confirmButtonText: 'Voltar',
             }).then(function() {
               $('#investmentFormModal').modal('hide');
+              window.location.reload();
             })
           }
           className="btn btn-action"
           type="submit"
+          disabled={investment.value === '' || isNaN(investment.value)}
         >
           Salvar
         </button>

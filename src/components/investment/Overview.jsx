@@ -11,37 +11,11 @@ export default props => {
   // Array Order: Total Investments, Total Fixed Investments, Total Variable Investments
   const [sumInvestments, setSumInvestments] = useState([0, 0, 0]);
   const [isLoading, setisLoading] = useState(true);
-  const graphData = {
-    series: [
-      {
-        data: [400, 430],
-      },
-    ],
-    options: {
-      colors: ['#33c47c'],
-      chart: {
-        type: 'bar',
-        height: 250,
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      xaxis: {
-        categories: ['Renda Fixa', 'Renda Variável'],
-      },
-      yaxis: {
-        show: false,
-      },
-    },
-  };
+  const [graphData = {}, setGraphData] = useState();
 
   useEffect(() => {
-    function sumInvestments(investments) {
+    setisLoading(true);
+    function filterInvestments(investments) {
       let totalInvestments = 0;
       let sumFixedIvestments = 0;
       let sumvariableInvestments = 0;
@@ -60,15 +34,47 @@ export default props => {
           sumFixedIvestments,
           sumvariableInvestments,
         ]);
+
         return true;
       }, []);
     }
 
     if (investments !== null) {
-      sumInvestments(investments);
+      filterInvestments(investments);
+      console.log(graphData);
+      console.log(sumInvestments);
+      setGraphData({
+        series: [
+          {
+            data: [sumInvestments[1], sumInvestments[2]],
+          },
+        ],
+        options: {
+          colors: ['#33c47c'],
+          chart: {
+            type: 'bar',
+            height: 250,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          xaxis: {
+            categories: ['Renda Fixa', 'Renda Variável'],
+          },
+          yaxis: {
+            show: false,
+          },
+        },
+      });
+
       setisLoading(false);
     }
-  }, [investments, setSumInvestments]);
+  }, [investments, setSumInvestments, isLoading]);
 
   return (
     <section className="app-overview-container">
